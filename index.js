@@ -21,7 +21,17 @@ function returnBoolIfEndpointInNextPossibleMoves(currentPosition, endPoint) {
     );
 }
 
+function displayConsoleMessage(routeArray) {
+    console.log(`You made it in ${routeArray.length} moves! Here's your route:`)
+    routeArray.forEach(vertex => {
+        console.log(vertex)
+    });
+}
+
 function knightMoves(startingPoint, endPoint) {
+    if (startingPoint[0] === endPoint[0] && startingPoint[1] === endPoint[1]) {
+        return 'The starting point must be different from the end point';
+    }
     let queue = [[startingPoint]];
     while (queue.length > 0) {
         const route = queue.shift();
@@ -29,13 +39,13 @@ function knightMoves(startingPoint, endPoint) {
         const movesFromCurrentPosition = createNextPossibleMoves(previousPosition);
         if (returnBoolIfEndpointInNextPossibleMoves(movesFromCurrentPosition, endPoint)) {
             route.push(endPoint)
-            return route
+            displayConsoleMessage(route)
+            return
         }
         for (let move of movesFromCurrentPosition) {
-            const nextPossiblePosition = move;
-            queue.push([...route, nextPossiblePosition])
+            queue.push([...route, move])
         }
     }
     return
 }
-console.log(knightMoves([0, 0], [7, 3]))
+knightMoves([0, 0], [7, 3])
