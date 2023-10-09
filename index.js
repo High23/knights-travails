@@ -14,3 +14,24 @@ function createNextPossibleMoves(knightsLocation) {
     }
     return possibleMoves
 }
+
+function returnBoolIfEndpointInNextPossibleMoves(currentPosition, endPoint) {
+    return currentPosition.some(
+        (possibleNextMove) => possibleNextMove[0] === endPoint[0] && possibleNextMove[1] === endPoint[1]
+    );
+}
+
+function knightMoves(startingPoint, endPoint) {
+    let queue = [[startingPoint]];
+    while (queue.length > 0) {
+        const route = queue.shift();
+        const previousPosition = route[route.length - 1];
+        const movesFromCurrentPosition = createNextPossibleMoves(previousPosition);
+        if (returnBoolIfEndpointInNextPossibleMoves(movesFromCurrentPosition, endPoint)) {
+            route.push(endPoint)
+            return route
+        }
+    }
+    return
+}
+console.log(knightMoves([0, 0], [2, 1]))
