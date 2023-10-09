@@ -31,7 +31,11 @@ function knightMoves(startingPoint, endPoint) {
             route.push(endPoint)
             return route
         }
+        for (let move of movesFromCurrentPosition) {
+            const nextPossiblePosition = move;
+            queue.push([...route, nextPossiblePosition])
+        }
     }
     return
 }
-console.log(knightMoves([0, 0], [2, 1]))
+console.log(knightMoves([0, 0], [7, 3]))
