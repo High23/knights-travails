@@ -5,6 +5,6 @@ This project was made while following along the odin project. The purpose of thi
 starting point to the end point.
 
 ### How to use
-- Copy and paste code either in the browser or a file in your chosen IDE
+- Copy and paste code either in your browser's console or a file in your chosen IDE
 - Change the starting position the knight move function. knightMove(startingPoint, endPoint)
 - The console should respond with the number of moves taken and all the squares it stepped on
