@@ -30,7 +30,11 @@ function displayConsoleMessage(routeArray) {
 
 function knightMoves(startingPoint, endPoint) {
     if (startingPoint[0] === endPoint[0] && startingPoint[1] === endPoint[1]) {
-        return 'The starting point must be different from the end point';
+        return console.log('The starting point must be different from the end point');
+    } else if (startingPoint[0] < 0 || startingPoint[0] > 7 || startingPoint[1] < 0 || startingPoint[1] > 7) {
+        return console.log('The starting point MUST be a square within the board');
+    } else if (endPoint[0] < 0 || endPoint[0] > 7 || endPoint[1] < 0 || endPoint[1] > 7) {
+        return console.log('The endpoint MUST be a square within the board');
     }
     let queue = [[startingPoint]];
     while (queue.length > 0) {
@@ -48,4 +52,4 @@ function knightMoves(startingPoint, endPoint) {
     }
     return
 }
-knightMoves([0, 0], [7, 3])
+knightMoves([0, 0], [7, 4])
